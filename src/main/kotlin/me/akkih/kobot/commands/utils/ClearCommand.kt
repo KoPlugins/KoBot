@@ -22,7 +22,7 @@ class ClearCommand(guild: Guild, bot: JDA) {
 
                 val amount = it.getOption("amount")!!.asInt
 
-                if (amount < 1 || amount > 100) {
+                if (amount < 1 || amount > 100 || amount == 0) {
                     it.hook.sendMessageEmbeds(Embed {
                         title = "Oops!"
                         description = """
@@ -31,9 +31,11 @@ class ClearCommand(guild: Guild, bot: JDA) {
                         """.trimIndent()
                         color = KoBot.EMBED_COLOR
                     }).queue()
+
+                    return@onCommand
                 }
 
-                val messages = it.messageChannel.history.retrievePast(amount + 1).complete()
+                val messages = it.messageChannel.history.retrievePast(amount).complete()
 
                 it.messageChannel.purgeMessages(messages)
                 it.hook.sendMessageEmbeds(Embed {
