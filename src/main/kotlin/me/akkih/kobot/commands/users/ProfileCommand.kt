@@ -1,4 +1,4 @@
-package me.akkih.kobot.commands
+package me.akkih.kobot.commands.users
 
 import dev.minn.jda.ktx.events.onCommand
 import dev.minn.jda.ktx.interactions.commands.option

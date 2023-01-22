@@ -7,6 +7,8 @@ import dev.minn.jda.ktx.jdabuilder.light
 import dev.minn.jda.ktx.util.SLF4J
 import io.github.cdimascio.dotenv.dotenv
 import kotlinx.coroutines.*
+import me.akkih.kobot.commands.users.ProfileCommand
+import me.akkih.kobot.commands.utils.ClearCommand
 import me.akkih.kobot.listeners.UserListener
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.entities.Guild
@@ -26,6 +28,8 @@ class KoBot {
         Activity.playing("using KoPlugins"),
         Activity.listening("Akkih crying over code"),
         Activity.watching("Akkih screaming over code"),
+        Activity.watching("Penguin and Akkih marrying"),
+        Activity.playing("VALORANT"),
     )
 
     private val bot = light(dotenv().get("DISCORD_TOKEN")) {
@@ -66,6 +70,7 @@ class KoBot {
             logger.info("${it.user.name}#${it.user.discriminator} executed ${it.commandString}")
         }
 
+        ClearCommand(guild, bot)
         ProfileCommand(guild, bot)
         logger.info("Commands registered successfully!")
     }
