@@ -9,6 +9,7 @@ import io.github.cdimascio.dotenv.dotenv
 import kotlinx.coroutines.*
 import me.akkih.kobot.commands.users.ProfileCommand
 import me.akkih.kobot.commands.utils.ClearCommand
+import me.akkih.kobot.commands.utils.VersionCommand
 import me.akkih.kobot.listeners.UserListener
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.entities.Guild
@@ -71,6 +72,7 @@ class KoBot {
         }
 
         ClearCommand(guild, bot)
+        VersionCommand(guild, bot)
         ProfileCommand(guild, bot)
         logger.info("Commands registered successfully!")
     }
